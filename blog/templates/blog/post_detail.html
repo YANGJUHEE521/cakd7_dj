@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{post.title}} - Blog</title>
-</head>
-<body>
-    <nav> 
-        <a href="/blog/">Blog</a>
-    </nav>
+{% extends 'blog/base.html' %}
+
+<!-- 제목 바뀔 수 있으니까  -->
+{% block head_title %} {{post.title}} -Blog {% endblock %}
+{% block main_area %}
+
     <h1>{{post.title}}</h1>
     <h4>{{post.created_at}}</h4>
     <p>{{post.content}}</p>
     <hr/>
     <h3>댓글</h3>
-</body>
-</html>
+{% endblock %}
