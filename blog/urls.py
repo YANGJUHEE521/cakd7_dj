@@ -1,5 +1,6 @@
 from django.urls import path
-from . import views
+# 현재 폴더에 있는 views.py를 사용할 수 있게 가져와라 
+from . import views 
 
 urlpatterns = [
     path('',views.PostList.as_view()),
