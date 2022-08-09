@@ -1,5 +1,7 @@
+{% extends 'blog/base.html' %}
 
-<!-- Page header with logo and tagline-->
+<!-- base.html에 포함되지않는데 index.html에 포함 시킬 부분을 추가하는 방법 -->
+{% block main_area %} <!-- Page header with logo and tagline-->
 <header class="py-5 bg-light border-bottom mb-4">
     <div class="container">
         <div class="text-center my-5">
@@ -104,3 +106,6 @@
 
 </body>
 
+{% endblock %}
+
+<!-- endblock 한 부분은 base.html에 표시해줘야함 !  -->
