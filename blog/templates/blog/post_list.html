@@ -6,7 +6,6 @@
     <div class="container">
         <div class="text-center my-5">
             <h1 class="fw-bolder">Juhee's everything</h1>
-            
         </div>
     </div>
 </header>
@@ -18,11 +17,17 @@
             <!-- Featured blog post-->
             {% for p in post_list %}
             <div class="card mb-4">
-                
-                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                <div class="card-body">
+                {% if p.head_image %}
+                    <a href="#"><img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head image" /></a>
+                {% else %}
+                    <img class = 'card-img-top' scr = 'https://picsum.photos/seed/{{p.id}}/800/200' alt='random image'>
+                {% endif %}
+                    <div class="card-body">
                     <h2 class="card-title">{{ p.title }}</h2>
-                    <p class="card-text">{{ p.content }}</p>
+                    {% if p.hook_text %}
+                        <h5 class="text-muted">{{ p.hook_text }}</h5>
+                    {% endif %}
+                    <p class="card-text">{{ p.content | truncatewords:45 }}</p>
                     <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>
                 </div>
                 <div class="card-footer text-muted">
