@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from unicodedata import category
 from django.views.generic import ListView, DetailView
-from .models import Category, Post
+from .models import Category, Post, Tag
 
 
 class PostList(ListView):
@@ -41,6 +41,21 @@ def category_page(request, slug):
             'categories': Category.objects.all(),
             'no_category_post_count': Post.objects.filter(category=None).count(),
             'category': category,
+        }
+    )
+
+def tag_page(request, slug):
+    tag = Tag.objects.get(slug=slug)
+    post_list= tag.post_set.all()
+
+    return render(
+        request,
+        'blog/post_list.html',
+        {
+            'post_list': post_list,
+            'tag': tag,
+            'no_category_post_count': Post.objects.filter(category=None).count(),
+            'category': Category.objects.all(),
         }
     )
 
