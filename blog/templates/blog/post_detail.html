@@ -21,8 +21,11 @@
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">Posted on {{ post.created_at }}</div>
                     <!-- Post categories-->
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                    {% if post.category %}
+                        <span class = 'badge badge-secondary float-right'>{{post.category}}</span>
+                    {% else %}
+                        <span class = 'badge badge-secondary float-right'>미분류</span>
+                    {% endif %}
                 </header>
                 <!-- Preview image figure-->
                 {% if post.head_image %}
@@ -105,15 +108,20 @@
                 </div>
             </div>
             <!-- Categories widget-->
-            <div class="card mb-4">
+            <div class="card mb-4" id="categories-card">
                 <div class="card-header">Categories</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Web Design</a></li>
-                                <li><a href="#!">HTML</a></li>
-                                <li><a href="#!">Freebies</a></li>
+                        <div class="col-s-6">
+                            <ul>
+                                {% for category in categories %}
+                                <li>
+                                    <a href="{{category.get_absolute_url}}"> {{category}} ({{category.post_set.count}})</a>
+                                </li>
+                                {% endfor %}
+                                <li>
+                                    <a href="/blog/category/no_category/">미분류 ({{ no_category_post_count}})</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="col-sm-6">
