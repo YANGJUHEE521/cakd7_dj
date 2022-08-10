@@ -1,6 +1,17 @@
+from unicodedata import category
 from django.db import models
 from django.contrib.auth.models import User
 import os
+
+class Category(models.Model):
+    name = models.CharField(max_length=50, unique=True) #카테고리 이름 
+    slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name_plural = 'Categories'
 
 class Post(models.Model):
     title = models.CharField(max_length=30)
@@ -15,8 +26,11 @@ class Post(models.Model):
 
     author = models.ForeignKey(User, null = True, on_delete=models.SET_NULL)
 
+    category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
+
     def __str__(self):
         return f'[{self.pk}]{self.title} :: {self.author}'
+        
 
     def get_file_name(self):
         return os.path.basename(self.file_upload.name)
