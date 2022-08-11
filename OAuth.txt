@@ -1,0 +1,4 @@
+OAuth 클라이언트
+id : 746016333543-kk9si0n0oruo6u49l51v3ojh1crqvlat.apps.googleusercontent.com
+
+비밀번호 : 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

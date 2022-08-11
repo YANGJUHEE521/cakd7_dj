@@ -54,8 +54,8 @@ def tag_page(request, slug):
         {
             'post_list': post_list,
             'tag': tag,
+            'categories': Category.objects.all(),
             'no_category_post_count': Post.objects.filter(category=None).count(),
-            'category': Category.objects.all(),
         }
     )
 
