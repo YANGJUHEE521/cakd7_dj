@@ -20,8 +20,10 @@ from django.conf import settings
 from django.conf.urls.static import static 
 
 urlpatterns = [
+    path('markdownx/', include('markdownx.urls')),
     path('blog/', include('blog.urls')),
     path('', include('single_pages.urls')),
+    path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
 ]
 
