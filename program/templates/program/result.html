@@ -3,6 +3,22 @@
 {% block head_title %}Program{%endblock%}
 
 {% block main_area %}
-    This is result
-    {{ans}} {{lis}}
+<div class="container">
+    <header class="py-5 bg-dark border-bottom mb-4">
+        <div class="container">
+            <div class="text-center text-white my-5">
+                <h1 class="fw-bolder">result</h1>
+            </div>
+        </div>
+    </header>
+</br>
+    <div>
+        <p class="h2">This is result</p>
+        <p><mark> {{ans}} </mark></p>
+        </br>
+        <p class="h2">your input data</p>
+        <p><mark> {{lis}} </mark></p>
+    </div>
+</div> 
+
 {% endblock %}

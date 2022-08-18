@@ -5,19 +5,25 @@
 {% block main_area %}
     
     <div class="container">
-        <div>
-            <p class="h2">This is input data</p> 
-        </div>
+        <header class="py-5 bg-dark border-bottom mb-4">
+            <div class="container">
+                <div class="text-center text-white my-5">
+                    <h1 class="fw-bolder">the sum of two numbers</h1>
+                </div>
+            </div>
+        </header>
     </br>
     </br>
     </br>
         <div>
-        <form method="get" action ='/result/'>
+        <form method="get" action="{% url 'result' %}">
             {{ form | crispy }}
 
             <input type="text" class="form-control" placeholder="첫 번째 숫자를 입력하세요." name='a'></br>
             <input type="text" class="form-control" placeholder="두 번째 숫자를 입력하세요." name='b'>
-            <input type="submit" value="계산">
+        </br>
+        </br>
+            <center><button type='submit' class='btn btn-primary float-right'>Submit</button></center>
         </form>
         </div>
     </div> 
