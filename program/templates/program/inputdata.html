@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}Program{%endblock%}
+
+{% block main_area %}
+    
+    <div class="container">
+        <div>
+            <p class="h2">This is input data</p> 
+        </div>
+    </br>
+    </br>
+    </br>
+        <div>
+        <form method="get" action ='/result/'>
+            {{ form | crispy }}
+
+            <input type="text" class="form-control" placeholder="첫 번째 숫자를 입력하세요." name='a'></br>
+            <input type="text" class="form-control" placeholder="두 번째 숫자를 입력하세요." name='b'>
+            <input type="submit" value="계산">
+        </form>
+        </div>
+    </div> 
+{% endblock %}

@@ -7,6 +7,7 @@ from .models import Category, Post, Tag, Comment
 from .forms import CommentForm
 from django.core.exceptions import PermissionDenied
 from django.utils.text import slugify
+from django.db.models import Q
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
@@ -84,6 +85,7 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 class PostList(ListView):
     model = Post
     ordering = '-pk'  #최신 글부터 맨 위에 배치 
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super(PostList, self).get_context_data()
@@ -172,4 +174,20 @@ def delete_comment(request, pk):
         return redirect(post.get_absolute_url())
     else:
         raise PermissionDenied
-        
+
+class PostSearch(PostList):
+    paginate_by = None
+
+    def get_queryset(self):
+        q = self.kwargs['q']
+        post_list = Post.objects.filter(
+            Q(title__contains=q) | Q(tags__name__contains=q)
+        ).distinct()
+        return post_list
+
+    def get_context_data(self, **kwargs):
+        context = super(PostSearch, self).get_context_data()
+        q = self.kwargs['q']
+        context['search_info'] = f'Search: {q} ({self.get_queryset().count()})'
+
+        return context        
