@@ -16,7 +16,8 @@
     </br>
     </br>
         <div>
-        <form method="get" action="{% url 'result' %}">
+        <!-- <form method="get" action="{% url 'result' %}"> -->  <!-- 이렇게 해도 됨! -->
+        <form method="get" action="result">
             {{ form | crispy }}
 
             <input type="text" class="form-control" placeholder="첫 번째 숫자를 입력하세요." name='a'></br>
