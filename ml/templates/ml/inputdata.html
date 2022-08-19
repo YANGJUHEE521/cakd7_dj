@@ -1,0 +1,79 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}ml{%endblock%}
+
+{% block main_area %}
+    
+    <div class="container">
+        <header class="py-5 bg-dark border-bottom mb-4">
+            <div class="container">
+                <div class="text-center text-white my-5">
+                    <h1 class="fw-bolder">Survivor Prediction</h1>
+                </div>
+            </div>
+        </header>
+    </br>
+    </br>
+    </br>
+        <div>
+        <!-- <form method="get" action="{% url 'result' %}"> -->  <!-- 이렇게 해도 됨! -->
+        <form method="get" action="ml_result">
+            {{ form | crispy }}
+            <p class="h2">생존자의 정보를 입력해주세요.</p></br>
+            <div class="form-group row">
+                <label  class="col-sm-4 col-form-label"> fare_cat </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="write fare_cat value." name='fare_cat'></br>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-4 col-form-label"> age_cat </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="write age_cat value." name='age_cat'></br>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-4 col-form-label"> family </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="write family value." name='family'></br>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-4 col-form-label"> sex_female </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="write sex_female value." name='sex_female'></br>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-4 col-form-label"> sex_male </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="write sex_male value." name='sex_male'></br>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-4 col-form-label"> embarked_C </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="write embarked_C value." name='embarked_C'></br>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-4 col-form-label"> embarked_Q </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="write embarked_Q value." name='embarked_Q'></br>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-4 col-form-label"> fare_cat </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="write fare_cat value." name='embarked_S'>
+                </div>
+            </div>
+            
+        </br>
+        </br>
+            <center><button type='submit' class='btn btn-success float-right'>Predict</button></center>
+        </br>
+        </form>
+        </div>
+    </div> 
+{% endblock %}

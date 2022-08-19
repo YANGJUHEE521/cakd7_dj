@@ -49,7 +49,8 @@ INSTALLED_APPS = [
 
     'blog',
     'single_pages',
-    'program'
+    'program',
+    'ml',
 
 
     
